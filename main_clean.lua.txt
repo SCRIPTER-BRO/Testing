@@ -1,0 +1,2219 @@
+-- Deobfuscated by deobf (dynamic trace)
+-- source: in.lua
+-- NOTE: reconstructed from observed behaviour; branches that were not taken
+--       during the trace are missing and conditions are only noted in comments.
+-- run status: finished
+-- 6570 statements recorded in 1.32s
+-- non-standard globals touched: syn, gethwid
+
+-- [deobf] folded 1046 repeated calls into 48 helper functions and 4 unrolled runs into loops
+-- loadstring() of 2442 bytes, its source:
+-- |  --[[ 34 comment lines ]] return setfenv(function(...) return OblDkaTB(...) end, setmetatable({ ["OblDkaTB"] = ... }, { __index = getfenv((...)) })) 
+-- [deobf] removed 55 lines of the obfuscator's environment/anti-tamper probes
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local MarketplaceService = game:GetService("MarketplaceService")
+game:IsLoaded()
+local hui = gethui()
+local PlayerGui = Players.LocalPlayer:FindFirstChildOfClass("PlayerGui")
+local hui2 = gethui()
+local CoreGui = game:GetService("CoreGui")
+
+for _, hui3 in ipairs({
+	hui, PlayerGui, hui2, CoreGui,
+}) do
+	local children = hui3:GetChildren()
+
+	for i, v in ipairs(children) do
+	end
+end
+
+local NR_Loader = Instance.new("ScreenGui")
+NR_Loader.Name = "NR_Loader"
+NR_Loader.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+NR_Loader.ResetOnSpawn = false
+NR_Loader.IgnoreGuiInset = true
+NR_Loader.DisplayOrder = 1000
+NR_Loader.Parent = hui
+
+local function createUICorner(offset)
+	local UICorner = Instance.new("UICorner")
+	UICorner.CornerRadius = UDim.new(0, offset)
+	return UICorner
+end
+
+local UICorner = createUICorner(14)
+
+local function createUIStroke(transparency, r, g, b)
+	local UIStroke = Instance.new("UIStroke")
+	UIStroke.Thickness = 1
+	UIStroke.Transparency = transparency
+	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke.Color = Color3.fromRGB(r, g, b)
+	return UIStroke
+end
+
+local UIStroke = createUIStroke(0.2, 38, 44, 41)
+local Window = Instance.new("Frame")
+Window.Active = true
+Window.Parent = NR_Loader
+Window.AnchorPoint = Vector2.new(0.5, 0.5)
+Window.ClipsDescendants = true
+Window.Name = "Window"
+Window.Position = UDim2.fromScale(0.5, 0.5)
+Window.BackgroundColor3 = Color3.fromRGB(14, 16, 15)
+Window.BackgroundTransparency = 0.12
+Window.BorderSizePixel = 0
+Window.Size = UDim2.fromOffset(420, 330)
+UICorner.Parent = Window
+UIStroke.Parent = Window
+
+local function createUIScale(parent)
+	local UIScale = Instance.new("UIScale")
+	UIScale.Parent = parent
+	return UIScale
+end
+
+local UIScale = createUIScale(Window)
+UIScale.Scale = 0.34
+
+local function onChangedSignal()
+	local changedSignal = workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize")
+
+	changedSignal:Connect(function()
+		UIScale.Scale = 0.34
+	end)
+end
+
+onChangedSignal()
+local changedSignal2 = workspace:GetPropertyChangedSignal("CurrentCamera")
+
+changedSignal2:Connect(function()
+	UIScale.Scale = 0.34
+	onChangedSignal()
+end)
+
+UIScale.Scale = 0.30600000000000005
+Window.BackgroundTransparency = 1
+Window.UIStroke.Transparency = 1
+local tween = TweenService:Create(UIScale, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 0.34 })
+tween:Play()
+local tween2 = TweenService:Create(Window, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.12 })
+tween2:Play()
+local tween3 = TweenService:Create(Window.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Transparency = 0.2 })
+tween3:Play()
+local Toasts = Instance.new("Frame")
+Toasts.AnchorPoint = Vector2.new(1, 1)
+Toasts.Name = "Toasts"
+Toasts.Position = UDim2.new(1, -12, 1, -12)
+Toasts.Parent = NR_Loader
+Toasts.BackgroundTransparency = 1
+Toasts.AutomaticSize = Enum.AutomaticSize.Y
+Toasts.Size = UDim2.new(0, 250, 0, 0)
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+UIListLayout.Parent = Toasts
+UIListLayout.Padding = UDim.new(0, 6)
+local UICorner2 = createUICorner(14)
+local TopBar = Instance.new("Frame")
+TopBar.Name = "TopBar"
+TopBar.BackgroundColor3 = Color3.fromRGB(18, 21, 20)
+TopBar.Parent = Window
+TopBar.BackgroundTransparency = 0.1
+TopBar.BorderSizePixel = 0
+TopBar.Size = UDim2.new(1, 0, 0, 52)
+UICorner2.Parent = TopBar
+local Frame5 = Instance.new("Frame")
+Frame5.BackgroundTransparency = 0.1
+Frame5.Position = UDim2.new(0, 0, 1, -14)
+Frame5.Parent = TopBar
+Frame5.BackgroundColor3 = Color3.fromRGB(18, 21, 20)
+Frame5.BorderSizePixel = 0
+Frame5.Size = UDim2.new(1, 0, 0, 14)
+local UICorner3 = createUICorner(8)
+local Back = Instance.new("TextButton")
+Back.Visible = false
+Back.TextColor3 = Color3.fromRGB(120, 128, 124)
+Back.Parent = TopBar
+Back.Text = "<"
+Back.AutoButtonColor = false
+Back.Font = Enum.Font.GothamBold
+Back.Name = "Back"
+Back.Position = UDim2.new(0, 12, 0.5, -13)
+Back.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+Back.BackgroundTransparency = 1
+Back.TextSize = 14
+Back.Size = UDim2.fromOffset(26, 26)
+UICorner3.Parent = Back
+local UICorner4 = createUICorner(8)
+local ImageLabel = Instance.new("ImageLabel")
+ImageLabel.Image = "rbxassetid://124947058155926"
+ImageLabel.BackgroundTransparency = 1
+ImageLabel.Position = UDim2.new(0, 14, 0.5, -16)
+ImageLabel.Parent = TopBar
+ImageLabel.Size = UDim2.fromOffset(32, 32)
+UICorner4.Parent = ImageLabel
+
+local function createTextLabel(r, g, b, parent, text, textSize, xOffset, yOffset)
+	local TextLabel = Instance.new("TextLabel")
+	TextLabel.TextColor3 = Color3.fromRGB(r, g, b)
+	TextLabel.Parent = parent
+	TextLabel.Text = text
+	TextLabel.Font = Enum.Font.GothamBold
+	TextLabel.BackgroundTransparency = 1
+	TextLabel.Position = UDim2.new(0, 56, 0, 10)
+	TextLabel.TextTruncate = Enum.TextTruncate.AtEnd
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel.TextSize = textSize
+	TextLabel.Size = UDim2.new(1, -xOffset, 0, yOffset)
+end
+
+createTextLabel(228, 232, 229, TopBar, "Nasi Rendang LUA", 14, 160, 17)
+
+local function createTextLabel2(parent, text, yOffset, xOffset, yOffset2)
+	local TextLabel2 = Instance.new("TextLabel")
+	TextLabel2.TextColor3 = Color3.fromRGB(120, 128, 124)
+	TextLabel2.Parent = parent
+	TextLabel2.Text = text
+	TextLabel2.Font = Enum.Font.Gotham
+	TextLabel2.BackgroundTransparency = 1
+	TextLabel2.Position = UDim2.new(0, 56, 0, yOffset)
+	TextLabel2.TextTruncate = Enum.TextTruncate.AtEnd
+	TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel2.TextSize = 11
+	TextLabel2.Size = UDim2.new(1, -xOffset, 0, yOffset2)
+end
+
+createTextLabel2(TopBar, "Free Script Loader", 27, 160, 13)
+local UICorner5 = createUICorner(8)
+local TextButton2 = Instance.new("TextButton")
+TextButton2.TextColor3 = Color3.fromRGB(120, 128, 124)
+TextButton2.Parent = TopBar
+TextButton2.Text = "x"
+TextButton2.AutoButtonColor = false
+TextButton2.Font = Enum.Font.GothamBold
+TextButton2.BackgroundTransparency = 0.2
+TextButton2.Position = UDim2.new(1, -36, 0.5, -13)
+TextButton2.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+TextButton2.TextSize = 14
+TextButton2.Size = UDim2.fromOffset(26, 26)
+UICorner5.Parent = TextButton2
+local UICorner6 = createUICorner(8)
+local UIStroke2 = createUIStroke(0.2, 38, 44, 41)
+local Logout = Instance.new("TextButton")
+Logout.Visible = false
+Logout.TextColor3 = Color3.fromRGB(120, 128, 124)
+Logout.Parent = TopBar
+Logout.Text = "Logout"
+Logout.AutoButtonColor = false
+Logout.Font = Enum.Font.GothamBold
+Logout.Name = "Logout"
+Logout.Position = UDim2.new(1, -100, 0.5, -12)
+Logout.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+Logout.BackgroundTransparency = 0.2
+Logout.TextSize = 11
+Logout.Size = UDim2.fromOffset(58, 24)
+UICorner6.Parent = Logout
+UIStroke2.Parent = Logout
+setupTextButton(TextButton2, 220, 90, 90)
+setupTextButton(Back, 228, 232, 229)
+setupTextButton(Logout, 220, 90, 90)
+TopBar.Active = true
+
+TopBar.InputBegan:Connect(function(input, gameProcessed)
+end)
+
+TopBar.InputChanged:Connect(function(input2, gameProcessed2)
+end)
+
+UserInputService.InputChanged:Connect(function(input3, gameProcessed3)
+end)
+
+local Content = Instance.new("Frame")
+Content.Name = "Content"
+Content.Position = UDim2.new(0, 0, 0, 52)
+Content.Parent = Window
+Content.ClipsDescendants = true
+Content.BackgroundTransparency = 1
+Content.Size = UDim2.new(1, 0, 1, -52)
+local Home = Instance.new("Frame")
+Home.Name = "Home"
+Home.Position = UDim2.fromScale(0, 0)
+Home.Parent = Content
+Home.BackgroundTransparency = 1
+Home.Size = UDim2.fromScale(1, 1)
+local Gold = Instance.new("Frame")
+Gold.Visible = false
+Gold.Name = "Gold"
+Gold.Position = UDim2.fromScale(-1, 0)
+Gold.Parent = Content
+Gold.BackgroundTransparency = 1
+Gold.Size = UDim2.fromScale(1, 1)
+local Games = Instance.new("Frame")
+Games.Visible = false
+Games.Name = "Games"
+Games.Position = UDim2.fromScale(1, 0)
+Games.Parent = Content
+Games.BackgroundTransparency = 1
+Games.Size = UDim2.fromScale(1, 1)
+
+Back.MouseButton1Click:Connect(function()
+end)
+
+local UICorner7 = createUICorner(14)
+local ImageLabel2 = Instance.new("ImageLabel")
+ImageLabel2.AnchorPoint = Vector2.new(0.5, 0)
+ImageLabel2.Image = "rbxassetid://124947058155926"
+ImageLabel2.BackgroundTransparency = 1
+ImageLabel2.Position = UDim2.new(0.5, 0, 0, 8)
+ImageLabel2.Parent = Home
+ImageLabel2.Size = UDim2.fromOffset(60, 60)
+UICorner7.Parent = ImageLabel2
+local UIStroke3 = Instance.new("UIStroke")
+UIStroke3.Thickness = 1.5
+UIStroke3.Transparency = 0.55
+UIStroke3.Parent = ImageLabel2
+UIStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke3.Color = Color3.fromRGB(160, 95, 245)
+
+local function createTextLabel3(r, g, b, parent, text, yOffset, textSize, yOffset2)
+	local TextLabel3 = Instance.new("TextLabel")
+	TextLabel3.TextColor3 = Color3.fromRGB(r, g, b)
+	TextLabel3.Parent = parent
+	TextLabel3.Text = text
+	TextLabel3.Font = Enum.Font.GothamBold
+	TextLabel3.BackgroundTransparency = 1
+	TextLabel3.Position = UDim2.new(0, 16, 0, yOffset)
+	TextLabel3.TextXAlignment = Enum.TextXAlignment.Center
+	TextLabel3.TextSize = textSize
+	TextLabel3.Size = UDim2.new(1, -32, 0, yOffset2)
+end
+
+createTextLabel3(228, 232, 229, Home, "Nasi Rendang LUA Free Script", 72, 16, 20)
+local TextLabel4 = Instance.new("TextLabel")
+TextLabel4.TextColor3 = Color3.fromRGB(120, 128, 124)
+TextLabel4.Parent = Home
+TextLabel4.Text = "Detecting game..."
+TextLabel4.Font = Enum.Font.Gotham
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.Position = UDim2.new(0, 16, 0, 92)
+TextLabel4.TextTruncate = Enum.TextTruncate.AtEnd
+TextLabel4.TextXAlignment = Enum.TextXAlignment.Center
+TextLabel4.TextSize = 11
+TextLabel4.Size = UDim2.new(1, -32, 0, 14)
+local UICorner8 = createUICorner(9)
+local UIStroke4 = createUIStroke(0.2, 38, 44, 41)
+
+local function createFrame(yOffset, parent, yOffset2, uiCorner, uiStroke)
+	local Frame10 = Instance.new("Frame")
+	Frame10.BackgroundTransparency = 0.2
+	Frame10.Position = UDim2.new(0, 40, 0, yOffset)
+	Frame10.Parent = parent
+	Frame10.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	Frame10.BorderSizePixel = 0
+	Frame10.Size = UDim2.new(1, -80, 0, yOffset2)
+	uiCorner.Parent = Frame10
+	uiStroke.Parent = Frame10
+	return Frame10
+end
+
+local Frame10 = createFrame(112, Home, 32, UICorner8, UIStroke4)
+
+local function createTextBox(r, g, b, parent, placeholderText)
+	local TextBox = Instance.new("TextBox")
+	TextBox.TextColor3 = Color3.fromRGB(r, g, b)
+	TextBox.Parent = parent
+	TextBox.Text = ""
+	TextBox.TextXAlignment = Enum.TextXAlignment.Center
+	TextBox.ClearTextOnFocus = false
+	TextBox.Font = Enum.Font.GothamBold
+	TextBox.BackgroundTransparency = 1
+	TextBox.PlaceholderColor3 = Color3.fromRGB(120, 128, 124)
+	TextBox.Position = UDim2.fromOffset(8, 0)
+	TextBox.PlaceholderText = placeholderText
+	TextBox.TextSize = 12
+	TextBox.Size = UDim2.new(1, -16, 1, 0)
+	return TextBox
+end
+
+local TextBox = createTextBox(228, 232, 229, Frame10, "Paste your key (Standard / Lifetime)")
+local UICorner9 = createUICorner(10)
+local UIStroke5 = createUIStroke(0.2, 38, 44, 41)
+
+local function createTextButton(r, g, b, parent, text, backgroundTransparency, xScale, xOffset, yOffset, textSize, r2, g2, b2, yOffset2, uiCorner, uiStroke)
+	local TextButton4 = Instance.new("TextButton")
+	TextButton4.TextColor3 = Color3.fromRGB(r, g, b)
+	TextButton4.Parent = parent
+	TextButton4.Text = text
+	TextButton4.AutoButtonColor = false
+	TextButton4.Font = Enum.Font.GothamBold
+	TextButton4.BackgroundTransparency = backgroundTransparency
+	TextButton4.Position = UDim2.new(xScale, xOffset, 0, yOffset)
+	TextButton4.TextSize = textSize
+	TextButton4.BackgroundColor3 = Color3.fromRGB(r2, g2, b2)
+	TextButton4.BorderSizePixel = 0
+	TextButton4.Size = UDim2.new(0.5, -46, 0, yOffset2)
+	uiCorner.Parent = TextButton4
+	uiStroke.Parent = TextButton4
+	return TextButton4
+end
+
+local TextButton4 = createTextButton(228, 232, 229, Home, "GET KEY", 0.2, 0, 40, 152, 12, 24, 28, 26, 34, UICorner9, UIStroke5)
+
+local function onMouseEnter(parent, backgroundTransparency, backgroundTransparency2)
+	local UIScale2 = createUIScale(parent)
+
+	parent.MouseEnter:Connect(function()
+		local tween104 = TweenService:Create(UIScale2, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.03 })
+		tween104:Play()
+		local tween105 = TweenService:Create(parent, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = backgroundTransparency })
+		tween105:Play()
+	end)
+
+	parent.MouseLeave:Connect(function()
+		local tween106 = TweenService:Create(UIScale2, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+		tween106:Play()
+		local tween107 = TweenService:Create(parent, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = backgroundTransparency2 })
+		tween107:Play()
+	end)
+
+	parent.MouseButton1Down:Connect(function(x, y)
+		local tween108 = TweenService:Create(UIScale2, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 0.97 })
+		tween108:Play()
+	end)
+
+	parent.MouseButton1Up:Connect(function()
+		local tween109 = TweenService:Create(UIScale2, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.03 })
+		tween109:Play()
+	end)
+end
+
+onMouseEnter(TextButton4, 0.05, 0.2)
+local UICorner10 = createUICorner(10)
+local UIStroke6 = createUIStroke(0.15, 160, 95, 245)
+local TextButton5 = createTextButton(228, 232, 229, Home, "CHECK KEY", 0.1, 0.5, 6, 152, 12, 58, 34, 92, 34, UICorner10, UIStroke6)
+onMouseEnter(TextButton5, 0, 0.1)
+local UICorner11 = createUICorner(10)
+local UIStroke7 = createUIStroke(0.2, 255, 216, 92)
+
+local function createTextButton2(r, g, b, text, backgroundTransparency, yOffset, textSize, r2, g2, b2, yOffset2, uiCorner, uiStroke)
+	local TextButton6 = Instance.new("TextButton")
+	TextButton6.Visible = false
+	TextButton6.TextColor3 = Color3.fromRGB(r, g, b)
+	TextButton6.Parent = Home
+	TextButton6.Text = text
+	TextButton6.AutoButtonColor = false
+	TextButton6.Font = Enum.Font.GothamBold
+	TextButton6.BackgroundTransparency = backgroundTransparency
+	TextButton6.Position = UDim2.new(0, 40, 0, yOffset)
+	TextButton6.TextSize = textSize
+	TextButton6.BackgroundColor3 = Color3.fromRGB(r2, g2, b2)
+	TextButton6.BorderSizePixel = 0
+	TextButton6.Size = UDim2.new(1, -80, 0, yOffset2)
+	uiCorner.Parent = TextButton6
+	uiStroke.Parent = TextButton6
+	return TextButton6
+end
+
+local TextButton6 = createTextButton2(255, 216, 92, "GOLD MEMBER KEY", 0.2, 194, 12, 24, 28, 26, 38, UICorner11, UIStroke7)
+onMouseEnter(TextButton6, 0.05, 0.2)
+local UICorner12 = createUICorner(10)
+local UIStroke8 = createUIStroke(1, 160, 95, 245)
+local TextButton7 = createTextButton2(228, 232, 229, "CHOOSE GAME", 1, 150, 13, 58, 34, 92, 44, UICorner12, UIStroke8)
+onMouseEnter(TextButton7, 0, 0.1)
+
+TextButton7.MouseButton1Click:Connect(function()
+end)
+
+local UICorner13 = createUICorner(14)
+local UIStroke9 = createUIStroke(0.2, 38, 44, 41)
+local TierBadge = Instance.new("Frame")
+TierBadge.Visible = false
+TierBadge.Parent = Home
+TierBadge.AnchorPoint = Vector2.new(0.5, 0)
+TierBadge.BorderSizePixel = 0
+TierBadge.Name = "TierBadge"
+TierBadge.Position = UDim2.new(0.5, 0, 0, 110)
+TierBadge.BackgroundTransparency = 0.08
+TierBadge.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+TierBadge.AutomaticSize = Enum.AutomaticSize.X
+TierBadge.Size = UDim2.fromOffset(0, 28)
+UICorner13.Parent = TierBadge
+UIStroke9.Parent = TierBadge
+local UIPadding = Instance.new("UIPadding")
+UIPadding.Parent = TierBadge
+UIPadding.PaddingLeft = UDim.new(0, 16)
+UIPadding.PaddingRight = UDim.new(0, 16)
+local TextLabel5 = Instance.new("TextLabel")
+TextLabel5.TextColor3 = Color3.fromRGB(228, 232, 229)
+TextLabel5.Parent = TierBadge
+TextLabel5.Text = ""
+TextLabel5.Font = Enum.Font.GothamBold
+TextLabel5.BackgroundTransparency = 1
+TextLabel5.TextSize = 12
+TextLabel5.TextYAlignment = Enum.TextYAlignment.Center
+TextLabel5.AutomaticSize = Enum.AutomaticSize.X
+TextLabel5.Size = UDim2.fromOffset(0, 28)
+local ExpiryLabel = Instance.new("TextLabel")
+ExpiryLabel.Visible = false
+ExpiryLabel.TextColor3 = Color3.fromRGB(120, 128, 124)
+ExpiryLabel.Parent = Home
+ExpiryLabel.Text = ""
+ExpiryLabel.TextTruncate = Enum.TextTruncate.AtEnd
+ExpiryLabel.AnchorPoint = Vector2.new(0.5, 0)
+ExpiryLabel.Font = Enum.Font.Gotham
+ExpiryLabel.BackgroundTransparency = 1
+ExpiryLabel.Position = UDim2.new(0.5, 0, 0, 204)
+ExpiryLabel.TextXAlignment = Enum.TextXAlignment.Center
+ExpiryLabel.Name = "ExpiryLabel"
+ExpiryLabel.TextSize = 11
+ExpiryLabel.Size = UDim2.new(1, -60, 0, 16)
+createTextLabel3(255, 216, 92, Gold, "GOLD MEMBER", 58, 18, 22)
+local UICorner14 = createUICorner(9)
+local UIStroke10 = createUIStroke(0.2, 255, 216, 92)
+local Frame12 = createFrame(102, Gold, 34, UICorner14, UIStroke10)
+local TextBox2 = createTextBox(255, 216, 92, Frame12, "Paste your Gold key")
+local UICorner15 = createUICorner(10)
+local UIStroke11 = createUIStroke(0.2, 255, 216, 92)
+local TextButton8 = createTextButton(255, 216, 92, Gold, "GET GOLD KEY", 0.2, 0, 40, 148, 11, 24, 28, 26, 38, UICorner15, UIStroke11)
+onMouseEnter(TextButton8, 0.05, 0.2)
+local UICorner16 = createUICorner(10)
+local UIStroke12 = createUIStroke(0.15, 255, 216, 92)
+local TextButton9 = createTextButton(255, 216, 92, Gold, "CHECK KEY", 0.1, 0.5, 6, 148, 12, 70, 56, 20, 38, UICorner16, UIStroke12)
+onMouseEnter(TextButton9, 0, 0.1)
+
+local function setupTextButton(textButton, r, g, b)
+	textButton.MouseEnter:Connect(function()
+		local tween98 = TweenService:Create(textButton, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(r, g, b) })
+		tween98:Play()
+	end)
+
+	textButton.MouseLeave:Connect(function()
+		local tween99 = TweenService:Create(textButton, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+		tween99:Play()
+	end)
+end
+
+for _, item in ipairs({
+	{ textButton = TextButton5, frame = Frame10, yOffset = 112, textBox = TextBox },
+	{ textButton = TextButton9, frame = Frame12, yOffset = 102, textBox = TextBox2 },
+}) do
+	item.textButton.MouseButton1Click:Connect(function()
+		item.textButton.Text = "CHECKING..."
+
+		task.spawn(function()
+			item.textButton.Text = "CHECK KEY"
+			item.frame.Position = (UDim2.new(0, 40, 0, item.yOffset) + UDim2.fromOffset(-5, 0))
+			task.wait(0.04)
+			item.frame.Position = (UDim2.new(0, 40, 0, item.yOffset) + UDim2.fromOffset(5, 0))
+			task.wait(0.04)
+			-- [envlog] the statements above repeat forever (loop)
+		end)
+	end)
+
+	item.textBox.FocusLost:Connect(function(enterPressed, inputObject)
+		item.textButton.Text = "CHECKING..."
+
+		task.spawn(function()
+			item.textButton.Text = "CHECK KEY"
+			item.frame.Position = ((UDim2.new(0, 40, 0, item.yOffset) + UDim2.fromOffset(-5, 0)) + UDim2.fromOffset(-5, 0))
+			task.wait(0.04)
+			item.frame.Position = ((UDim2.new(0, 40, 0, item.yOffset) + UDim2.fromOffset(-5, 0)) + UDim2.fromOffset(5, 0))
+			task.wait(0.04)
+			-- [envlog] the statements above repeat forever (loop)
+		end)
+	end)
+end
+
+TextButton6.MouseButton1Click:Connect(function()
+end)
+
+local function createFrame2(uiCorner, uiStroke)
+	local Frame20 = Instance.new("Frame")
+	Frame20.BackgroundTransparency = 0.05
+	Frame20.Parent = Toasts
+	Frame20.BackgroundColor3 = Color3.fromRGB(14, 16, 15)
+	Frame20.BorderSizePixel = 0
+	Frame20.Size = UDim2.new(1, 0, 0, 44)
+	uiCorner.Parent = Frame20
+	uiStroke.Parent = Frame20
+	return Frame20
+end
+
+local function createFrame3(parent, r, g, b, uiCorner)
+	local Frame21 = Instance.new("Frame")
+	Frame21.Position = UDim2.new(0, 6, 0.5, -16)
+	Frame21.Parent = parent
+	Frame21.BackgroundColor3 = Color3.fromRGB(r, g, b)
+	Frame21.BorderSizePixel = 0
+	Frame21.Size = UDim2.new(0, 3, 1, -12)
+	uiCorner.Parent = Frame21
+end
+
+local function createTextLabel4(parent, text)
+	local TextLabel82 = Instance.new("TextLabel")
+	TextLabel82.TextWrapped = true
+	TextLabel82.TextColor3 = Color3.fromRGB(228, 232, 229)
+	TextLabel82.Parent = parent
+	TextLabel82.Text = text
+	TextLabel82.Font = Enum.Font.Gotham
+	TextLabel82.BackgroundTransparency = 1
+	TextLabel82.Position = UDim2.new(0, 16, 0, 0)
+	TextLabel82.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel82.TextSize = 12
+	TextLabel82.Size = UDim2.new(1, -26, 1, 0)
+	return TextLabel82
+end
+
+local function createUIScale2(parent, scale)
+	local UIScale27 = Instance.new("UIScale")
+	UIScale27.Parent = parent
+	UIScale27.Scale = scale
+	return UIScale27
+end
+
+local function tweenUIScale(r, g, b, text, value)
+	local UICorner77 = createUICorner(8)
+	local UIStroke49 = createUIStroke(0.2, r, g, b)
+	local Frame20 = createFrame2(UICorner77, UIStroke49)
+	local UICorner78 = createUICorner(2)
+	createFrame3(Frame20, r, g, b, UICorner78)
+	local TextLabel82 = createTextLabel4(Frame20, text)
+	local UIScale27 = createUIScale2(Frame20, 0.85)
+	local tween140 = TweenService:Create(UIScale27, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween140:Play()
+
+	task.delay(value, function()
+	end)
+
+	return Frame20, TextLabel82, UIScale27
+end
+
+TextButton4.MouseButton1Click:Connect(function()
+	setclipboard("https://www.nrlscript.com/key")
+	local Frame20, TextLabel82, UIScale27 = tweenUIScale(160, 95, 245, "Key page copied — open it in your browser: https://www.nrlscript.com/key", 8)
+end)
+
+TextButton8.MouseButton1Click:Connect(function()
+	setclipboard("https://discord.gg/vrzg9YaNPj")
+	local Frame22, TextLabel83, UIScale28 = tweenUIScale(160, 95, 245, "Discord invite copied — join to get Gold key.", 5)
+end)
+
+task.spawn(function()
+	local contents = readfile("nr_loader_key.txt")
+	local result = contents .. "|":gmatch("([^|]*)|")
+
+	for k, v5 in result do
+	end
+
+	local result2 = k:gsub("%s+", "")
+	local result3 = result2:gsub("%s", "")
+	local result4 = result3:upper()
+	HttpService:UrlEncode(result4)
+	gethwid()
+	HttpService:UrlEncode("uid-0")
+	-- [envlog] error: Luraph Script:1259: Luraph Script:861: Luraph Script:835: Luraph Script:728: Script:3: invalid argument #3 to 'format' (string expected, got userdata)
+end)
+
+Logout.MouseButton1Click:Connect(function()
+end)
+
+local TextButton10 = Instance.new("TextButton")
+TextButton10.TextColor3 = Color3.fromRGB(160, 95, 245)
+TextButton10.Parent = Home
+TextButton10.Text = "Need help? discord.gg/vrzg9YaNPj — click to copy"
+TextButton10.AutoButtonColor = false
+TextButton10.Font = Enum.Font.Gotham
+TextButton10.BackgroundTransparency = 1
+TextButton10.Position = UDim2.new(0, 40, 0, 240)
+TextButton10.TextSize = 10
+TextButton10.Size = UDim2.new(1, -80, 0, 18)
+
+TextButton10.MouseButton1Click:Connect(function()
+	setclipboard("https://discord.gg/vrzg9YaNPj")
+	local Frame24, TextLabel84, UIScale29 = tweenUIScale(160, 95, 245, "Invite link copied to clipboard", 5)
+end)
+
+-- identifyexecutor() -> "Wave"
+local TextLabel8 = Instance.new("TextLabel")
+TextLabel8.TextColor3 = Color3.fromRGB(120, 128, 124)
+TextLabel8.Parent = Home
+TextLabel8.Text = "16 scripts available  |  Wave"
+TextLabel8.AnchorPoint = Vector2.new(0, 1)
+TextLabel8.Font = Enum.Font.Gotham
+TextLabel8.BackgroundTransparency = 1
+TextLabel8.Position = UDim2.new(0, 16, 1, -8)
+TextLabel8.TextXAlignment = Enum.TextXAlignment.Center
+TextLabel8.TextSize = 10
+TextLabel8.Size = UDim2.new(1, -32, 0, 12)
+
+task.spawn(function()
+	for _, transparency in ipairs({
+		0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85,
+		0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45,
+		0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85, 0.45, 0.85,
+		0.45, 0.85, 0.45, 0.85, 0.45, 0.85,
+	}) do
+		local tween4 = TweenService:Create(UIStroke3, TweenInfo.new(1.1, Enum.EasingStyle.Sine), { Transparency = transparency })
+		tween4:Play()
+		task.wait(1.15)
+	end
+	-- [envlog] stopped after 50 waits
+end)
+
+local ScrollingFrame = Instance.new("ScrollingFrame")
+ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(38, 44, 41)
+ScrollingFrame.Parent = Games
+ScrollingFrame.ScrollBarThickness = 3
+ScrollingFrame.ScrollBarImageTransparency = 0.3
+ScrollingFrame.ScrollingDirection = Enum.ScrollingDirection.Y
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.Position = UDim2.new(0, 10, 0, 6)
+ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.Size = UDim2.new(1, -20, 1, -12)
+local UIListLayout2 = Instance.new("UIListLayout")
+UIListLayout2.Parent = ScrollingFrame
+UIListLayout2.Padding = UDim.new(0, 8)
+UIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
+local UIPadding2 = Instance.new("UIPadding")
+UIPadding2.PaddingTop = UDim.new(0, 4)
+UIPadding2.PaddingBottom = UDim.new(0, 6)
+UIPadding2.PaddingRight = UDim.new(0, 6)
+UIPadding2.PaddingLeft = UDim.new(0, 2)
+UIPadding2.Parent = ScrollingFrame
+
+task.spawn(function()
+	for _, value in ipairs({
+		0.4, 0.8, 1.2000000000000002, 1.6, 2,
+	}) do
+		MarketplaceService:GetProductInfo(0)
+		task.wait(value)
+	end
+
+	TextLabel4.Text = "Game not identified"
+end)
+
+local UICorner17 = createUICorner(10)
+local UIStroke13 = createUIStroke(0.2, 38, 44, 41)
+
+local function createTextButton3(layoutOrder, uiCorner, uiStroke)
+	local TextButton11 = Instance.new("TextButton")
+	TextButton11.LayoutOrder = layoutOrder
+	TextButton11.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	TextButton11.BackgroundTransparency = 0.2
+	TextButton11.AutoButtonColor = false
+	TextButton11.Parent = ScrollingFrame
+	TextButton11.Text = ""
+	TextButton11.BorderSizePixel = 0
+	TextButton11.Size = UDim2.new(1, 0, 0, 58)
+	uiCorner.Parent = TextButton11
+	uiStroke.Parent = TextButton11
+	return TextButton11
+end
+
+local TextButton11 = createTextButton3(1, UICorner17, UIStroke13)
+local UICorner18 = createUICorner(8)
+
+local function createImageLabel(image, parent, uiCorner)
+	local ImageLabel3 = Instance.new("ImageLabel")
+	ImageLabel3.Image = image
+	ImageLabel3.BackgroundTransparency = 0.3
+	ImageLabel3.Position = UDim2.new(0, 12, 0.5, -17)
+	ImageLabel3.Parent = parent
+	ImageLabel3.BackgroundColor3 = Color3.fromRGB(11, 13, 12)
+	ImageLabel3.Size = UDim2.fromOffset(34, 34)
+	uiCorner.Parent = ImageLabel3
+end
+
+createImageLabel("rbxthumb://type=GameIcon&id=10708913337&w=150&h=150", TextButton11, UICorner18)
+createTextLabel(228, 232, 229, TextButton11, "Anime Dice", 13, 205, 16)
+createTextLabel2(TextButton11, "Auto roll / farm / luck", 28, 205, 14)
+
+local function createTextLabel5(r, g, b, parent, text)
+	local TextLabel11 = Instance.new("TextLabel")
+	TextLabel11.TextColor3 = Color3.fromRGB(r, g, b)
+	TextLabel11.Parent = parent
+	TextLabel11.Text = text
+	TextLabel11.AnchorPoint = Vector2.new(1, 0)
+	TextLabel11.Font = Enum.Font.GothamBold
+	TextLabel11.BackgroundTransparency = 1
+	TextLabel11.Position = UDim2.new(1, -26, 0, 10)
+	TextLabel11.TextXAlignment = Enum.TextXAlignment.Right
+	TextLabel11.TextSize = 9.5
+	TextLabel11.Size = UDim2.fromOffset(116, 16)
+end
+
+createTextLabel5(120, 128, 124, TextButton11, "")
+
+local function createImageLabel2(parent)
+	local ImageLabel4 = Instance.new("ImageLabel")
+	ImageLabel4.AnchorPoint = Vector2.new(1, 0.5)
+	ImageLabel4.Image = "rbxasset://textures/loading/robloxTiltRight.png"
+	ImageLabel4.BackgroundTransparency = 1
+	ImageLabel4.Position = UDim2.new(1, -12, 0.5, 0)
+	ImageLabel4.Parent = parent
+	ImageLabel4.ImageColor3 = Color3.fromRGB(160, 95, 245)
+	ImageLabel4.Visible = false
+	ImageLabel4.Size = UDim2.fromOffset(14, 14)
+end
+
+createImageLabel2(TextButton11)
+
+local function createTextLabel6(parent)
+	local TextLabel12 = Instance.new("TextLabel")
+	TextLabel12.TextColor3 = Color3.fromRGB(120, 128, 124)
+	TextLabel12.Parent = parent
+	TextLabel12.Text = ">"
+	TextLabel12.AnchorPoint = Vector2.new(1, 0.5)
+	TextLabel12.Font = Enum.Font.GothamBold
+	TextLabel12.BackgroundTransparency = 1
+	TextLabel12.Position = UDim2.new(1, -12, 0.5, 0)
+	TextLabel12.TextSize = 12
+	TextLabel12.Size = UDim2.fromOffset(10, 16)
+	return TextLabel12
+end
+
+local TextLabel12 = createTextLabel6(TextButton11)
+local UICorner19 = createUICorner(6)
+local UIStroke14 = createUIStroke(0.2, 38, 44, 41)
+
+local function createTextButton4(parent, uiCorner, uiStroke)
+	local TextButton12 = Instance.new("TextButton")
+	TextButton12.TextColor3 = Color3.fromRGB(120, 128, 124)
+	TextButton12.Parent = parent
+	TextButton12.Text = "⚡ Auto Execute: OFF"
+	TextButton12.AutoButtonColor = false
+	TextButton12.AnchorPoint = Vector2.new(1, 0)
+	TextButton12.Font = Enum.Font.Gotham
+	TextButton12.BackgroundTransparency = 0.2
+	TextButton12.Position = UDim2.new(1, -26, 0, 31)
+	TextButton12.TextSize = 8.5
+	TextButton12.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	TextButton12.BorderSizePixel = 0
+	TextButton12.Size = UDim2.fromOffset(116, 20)
+	uiCorner.Parent = TextButton12
+	uiStroke.Parent = TextButton12
+	return TextButton12
+end
+
+local TextButton12 = createTextButton4(TextButton11, UICorner19, UIStroke14)
+
+local function helper3()
+	local contents2 = readfile("nr_loader_autoexec.json")
+	HttpService:JSONDecode(contents2)
+end
+
+local function helper4()
+	helper3()
+	TextButton12.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	TextButton12.BackgroundTransparency = 0.2
+	TextButton12.Text = "⚡ Auto Execute: OFF"
+	TextButton12.TextColor3 = Color3.fromRGB(120, 128, 124)
+	TextButton12.Font = Enum.Font.Gotham
+	TextButton12.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	TextButton12.UIStroke.Transparency = 0.5
+end
+
+helper4()
+
+TextButton12.MouseButton1Down:Connect(function(x7, y7)
+end)
+
+local function helper(gameName2)
+	local json = HttpService:JSONEncode({ durationHours = 24, enabledAt = 1792225605, expiresAt = 1792312005, gameName = gameName2 })
+	writefile("nr_loader_autoexec.json", json)
+	writefile("autoexec/nr_loader.lua", "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	writefile("autoexecute/nr_loader.lua", "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	syn.queue_on_teleport("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+end
+
+local function helper5(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper6(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper7(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper8(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper9(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper10(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper11(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper12(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper13(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper14(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper15(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper16(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper17(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper18(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper19(textButton)
+	helper3()
+	textButton.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	textButton.BackgroundTransparency = 0.2
+	textButton.Text = "⚡ Auto Execute: OFF"
+	textButton.TextColor3 = Color3.fromRGB(120, 128, 124)
+	textButton.Font = Enum.Font.Gotham
+	textButton.UIStroke.Color = Color3.fromRGB(38, 44, 41)
+	textButton.UIStroke.Transparency = 0.5
+end
+
+local function helper20(textButton, textButton2, textButton3, textButton4, textButton5, textButton6, textButton7, textButton8, textButton9, textButton10, textButton11, textButton12, textButton13, textButton14, textButton15)
+	helper4()
+	helper5(textButton)
+	helper6(textButton2)
+	helper7(textButton3)
+	helper8(textButton4)
+	helper9(textButton5)
+	helper10(textButton6)
+	helper11(textButton7)
+	helper12(textButton8)
+	helper13(textButton9)
+	helper14(textButton10)
+	helper15(textButton11)
+	helper16(textButton12)
+	helper17(textButton13)
+	helper18(textButton14)
+	helper19(textButton15)
+end
+
+TextButton12.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Anime Dice")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame26, TextLabel85, UIScale30 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Anime Dice aktif! Link dicopy ke clipboard.", 5)
+end)
+
+local function helper2()
+	task.spawn(function()
+	end, "", "")
+end
+
+helper2()
+local UIScale8 = createUIScale(TextButton11)
+
+TextButton11.MouseEnter:Connect(function()
+	local tween144 = TweenService:Create(TextButton11, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween144:Play()
+	local tween145 = TweenService:Create(UIScale8, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween145:Play()
+	local tween146 = TweenService:Create(TextLabel12, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween146:Play()
+end)
+
+TextButton11.MouseLeave:Connect(function()
+	local tween147 = TweenService:Create(TextButton11, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween147:Play()
+	local tween148 = TweenService:Create(UIScale8, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween148:Play()
+	local tween149 = TweenService:Create(TextLabel12, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween149:Play()
+end)
+
+TextButton11.MouseButton1Click:Connect(function()
+end)
+
+TextButton11.BackgroundTransparency = 1
+UIScale8.Scale = 0.96
+
+task.delay(0.04, function()
+	local tween56 = TweenService:Create(TextButton11, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween56:Play()
+	local tween57 = TweenService:Create(UIScale8, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween57:Play()
+end)
+
+local UICorner20 = createUICorner(10)
+local UIStroke15 = createUIStroke(0.2, 38, 44, 41)
+local TextButton13 = createTextButton3(2, UICorner20, UIStroke15)
+local UICorner21 = createUICorner(8)
+createImageLabel("rbxthumb://type=GameIcon&id=10035204815&w=150&h=150", TextButton13, UICorner21)
+createTextLabel(228, 232, 229, TextButton13, "Ride A Pet", 13, 205, 16)
+createTextLabel2(TextButton13, "Auto farm / egg / ride", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton13, "")
+createImageLabel2(TextButton13)
+local TextLabel16 = createTextLabel6(TextButton13)
+local UICorner22 = createUICorner(6)
+local UIStroke16 = createUIStroke(0.2, 38, 44, 41)
+local TextButton14 = createTextButton4(TextButton13, UICorner22, UIStroke16)
+helper5(TextButton14)
+
+TextButton14.MouseButton1Down:Connect(function(x8, y8)
+end)
+
+TextButton14.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Ride A Pet")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame28, TextLabel86, UIScale31 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Ride A Pet aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale9 = createUIScale(TextButton13)
+
+TextButton13.MouseEnter:Connect(function()
+	local tween151 = TweenService:Create(TextButton13, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween151:Play()
+	local tween152 = TweenService:Create(UIScale9, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween152:Play()
+	local tween153 = TweenService:Create(TextLabel16, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween153:Play()
+end)
+
+TextButton13.MouseLeave:Connect(function()
+	local tween154 = TweenService:Create(TextButton13, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween154:Play()
+	local tween155 = TweenService:Create(UIScale9, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween155:Play()
+	local tween156 = TweenService:Create(TextLabel16, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween156:Play()
+end)
+
+TextButton13.MouseButton1Click:Connect(function()
+end)
+
+TextButton13.BackgroundTransparency = 1
+UIScale9.Scale = 0.96
+
+task.delay(0.08, function()
+	local tween58 = TweenService:Create(TextButton13, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween58:Play()
+	local tween59 = TweenService:Create(UIScale9, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween59:Play()
+end)
+
+local UICorner23 = createUICorner(10)
+local UIStroke17 = createUIStroke(0.2, 38, 44, 41)
+local TextButton15 = createTextButton3(3, UICorner23, UIStroke17)
+local UICorner24 = createUICorner(8)
+createImageLabel("rbxassetid://105645768765428", TextButton15, UICorner24)
+createTextLabel(228, 232, 229, TextButton15, "Capybara VS Plant", 13, 205, 16)
+createTextLabel2(TextButton15, "Auto farm", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton15, "")
+createImageLabel2(TextButton15)
+local TextLabel20 = createTextLabel6(TextButton15)
+local UICorner25 = createUICorner(6)
+local UIStroke18 = createUIStroke(0.2, 38, 44, 41)
+local TextButton16 = createTextButton4(TextButton15, UICorner25, UIStroke18)
+helper6(TextButton16)
+
+TextButton16.MouseButton1Down:Connect(function(x9, y9)
+end)
+
+TextButton16.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Capybara VS Plant")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame30, TextLabel87, UIScale32 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Capybara VS Plant aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale10 = createUIScale(TextButton15)
+
+TextButton15.MouseEnter:Connect(function()
+	local tween158 = TweenService:Create(TextButton15, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween158:Play()
+	local tween159 = TweenService:Create(UIScale10, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween159:Play()
+	local tween160 = TweenService:Create(TextLabel20, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween160:Play()
+end)
+
+TextButton15.MouseLeave:Connect(function()
+	local tween161 = TweenService:Create(TextButton15, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween161:Play()
+	local tween162 = TweenService:Create(UIScale10, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween162:Play()
+	local tween163 = TweenService:Create(TextLabel20, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween163:Play()
+end)
+
+TextButton15.MouseButton1Click:Connect(function()
+end)
+
+TextButton15.BackgroundTransparency = 1
+UIScale10.Scale = 0.96
+
+task.delay(0.12, function()
+	local tween60 = TweenService:Create(TextButton15, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween60:Play()
+	local tween61 = TweenService:Create(UIScale10, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween61:Play()
+end)
+
+local UICorner26 = createUICorner(10)
+local UIStroke19 = createUIStroke(0.2, 38, 44, 41)
+local TextButton17 = createTextButton3(4, UICorner26, UIStroke19)
+local UICorner27 = createUICorner(8)
+createImageLabel("rbxassetid://71490087912254", TextButton17, UICorner27)
+createTextLabel(228, 232, 229, TextButton17, "Steal an Egg", 13, 205, 16)
+createTextLabel2(TextButton17, "Auto steal / farm", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton17, "")
+createImageLabel2(TextButton17)
+local TextLabel24 = createTextLabel6(TextButton17)
+local UICorner28 = createUICorner(6)
+local UIStroke20 = createUIStroke(0.2, 38, 44, 41)
+local TextButton18 = createTextButton4(TextButton17, UICorner28, UIStroke20)
+helper7(TextButton18)
+
+TextButton18.MouseButton1Down:Connect(function(x10, y10)
+end)
+
+TextButton18.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Steal an Egg")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame32, TextLabel88, UIScale33 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Steal an Egg aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale11 = createUIScale(TextButton17)
+
+TextButton17.MouseEnter:Connect(function()
+	local tween165 = TweenService:Create(TextButton17, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween165:Play()
+	local tween166 = TweenService:Create(UIScale11, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween166:Play()
+	local tween167 = TweenService:Create(TextLabel24, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween167:Play()
+end)
+
+TextButton17.MouseLeave:Connect(function()
+	local tween168 = TweenService:Create(TextButton17, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween168:Play()
+	local tween169 = TweenService:Create(UIScale11, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween169:Play()
+	local tween170 = TweenService:Create(TextLabel24, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween170:Play()
+end)
+
+TextButton17.MouseButton1Click:Connect(function()
+end)
+
+TextButton17.BackgroundTransparency = 1
+UIScale11.Scale = 0.96
+
+task.delay(0.16, function()
+	local tween62 = TweenService:Create(TextButton17, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween62:Play()
+	local tween63 = TweenService:Create(UIScale11, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween63:Play()
+end)
+
+local UICorner29 = createUICorner(10)
+local UIStroke21 = createUIStroke(0.2, 38, 44, 41)
+local TextButton19 = createTextButton3(5, UICorner29, UIStroke21)
+local UICorner30 = createUICorner(8)
+createImageLabel("rbxassetid://94197048748373", TextButton19, UICorner30)
+createTextLabel(228, 232, 229, TextButton19, "Grow a Chicken Fighter", 13, 205, 16)
+createTextLabel2(TextButton19, "Auto farm / fight", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton19, "")
+createImageLabel2(TextButton19)
+local TextLabel28 = createTextLabel6(TextButton19)
+local UICorner31 = createUICorner(6)
+local UIStroke22 = createUIStroke(0.2, 38, 44, 41)
+local TextButton20 = createTextButton4(TextButton19, UICorner31, UIStroke22)
+helper8(TextButton20)
+
+TextButton20.MouseButton1Down:Connect(function(x11, y11)
+end)
+
+TextButton20.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Grow a Chicken Fighter")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame34, TextLabel89, UIScale34 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Grow a Chicken Fighter aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale12 = createUIScale(TextButton19)
+
+TextButton19.MouseEnter:Connect(function()
+	local tween172 = TweenService:Create(TextButton19, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween172:Play()
+	local tween173 = TweenService:Create(UIScale12, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween173:Play()
+	local tween174 = TweenService:Create(TextLabel28, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween174:Play()
+end)
+
+TextButton19.MouseLeave:Connect(function()
+	local tween175 = TweenService:Create(TextButton19, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween175:Play()
+	local tween176 = TweenService:Create(UIScale12, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween176:Play()
+	local tween177 = TweenService:Create(TextLabel28, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween177:Play()
+end)
+
+TextButton19.MouseButton1Click:Connect(function()
+end)
+
+TextButton19.BackgroundTransparency = 1
+UIScale12.Scale = 0.96
+
+task.delay(0.2, function()
+	local tween64 = TweenService:Create(TextButton19, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween64:Play()
+	local tween65 = TweenService:Create(UIScale12, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween65:Play()
+end)
+
+local UICorner32 = createUICorner(10)
+local UIStroke23 = createUIStroke(0.2, 38, 44, 41)
+local TextButton21 = createTextButton3(6, UICorner32, UIStroke23)
+local UICorner33 = createUICorner(8)
+createImageLabel("rbxassetid://131974959514318", TextButton21, UICorner33)
+createTextLabel(228, 232, 229, TextButton21, "Anime Expedition", 13, 205, 16)
+createTextLabel2(TextButton21, "Auto match / farm", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton21, "")
+createImageLabel2(TextButton21)
+local TextLabel32 = createTextLabel6(TextButton21)
+local UICorner34 = createUICorner(6)
+local UIStroke24 = createUIStroke(0.2, 38, 44, 41)
+local TextButton22 = createTextButton4(TextButton21, UICorner34, UIStroke24)
+helper9(TextButton22)
+
+TextButton22.MouseButton1Down:Connect(function(x12, y12)
+end)
+
+TextButton22.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Anime Expedition")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame36, TextLabel90, UIScale35 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Anime Expedition aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale13 = createUIScale(TextButton21)
+
+TextButton21.MouseEnter:Connect(function()
+	local tween179 = TweenService:Create(TextButton21, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween179:Play()
+	local tween180 = TweenService:Create(UIScale13, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween180:Play()
+	local tween181 = TweenService:Create(TextLabel32, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween181:Play()
+end)
+
+TextButton21.MouseLeave:Connect(function()
+	local tween182 = TweenService:Create(TextButton21, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween182:Play()
+	local tween183 = TweenService:Create(UIScale13, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween183:Play()
+	local tween184 = TweenService:Create(TextLabel32, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween184:Play()
+end)
+
+TextButton21.MouseButton1Click:Connect(function()
+end)
+
+TextButton21.BackgroundTransparency = 1
+UIScale13.Scale = 0.96
+
+task.delay(0.24, function()
+	local tween66 = TweenService:Create(TextButton21, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween66:Play()
+	local tween67 = TweenService:Create(UIScale13, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween67:Play()
+end)
+
+local UICorner35 = createUICorner(10)
+local UIStroke25 = createUIStroke(0.2, 38, 44, 41)
+local TextButton23 = createTextButton3(7, UICorner35, UIStroke25)
+local UICorner36 = createUICorner(8)
+createImageLabel("rbxassetid://114063353587790", TextButton23, UICorner36)
+createTextLabel(228, 232, 229, TextButton23, "Iron Souls", 13, 205, 16)
+createTextLabel2(TextButton23, "Auto farm / forge / upgrade", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton23, "")
+createImageLabel2(TextButton23)
+local TextLabel36 = createTextLabel6(TextButton23)
+local UICorner37 = createUICorner(6)
+local UIStroke26 = createUIStroke(0.2, 38, 44, 41)
+local TextButton24 = createTextButton4(TextButton23, UICorner37, UIStroke26)
+helper10(TextButton24)
+
+TextButton24.MouseButton1Down:Connect(function(x13, y13)
+end)
+
+TextButton24.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Iron Souls")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame38, TextLabel91, UIScale36 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Iron Souls aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale14 = createUIScale(TextButton23)
+
+TextButton23.MouseEnter:Connect(function()
+	local tween186 = TweenService:Create(TextButton23, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween186:Play()
+	local tween187 = TweenService:Create(UIScale14, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween187:Play()
+	local tween188 = TweenService:Create(TextLabel36, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween188:Play()
+end)
+
+TextButton23.MouseLeave:Connect(function()
+	local tween189 = TweenService:Create(TextButton23, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween189:Play()
+	local tween190 = TweenService:Create(UIScale14, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween190:Play()
+	local tween191 = TweenService:Create(TextLabel36, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween191:Play()
+end)
+
+TextButton23.MouseButton1Click:Connect(function()
+end)
+
+TextButton23.BackgroundTransparency = 1
+UIScale14.Scale = 0.96
+
+task.delay(0.28, function()
+	local tween68 = TweenService:Create(TextButton23, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween68:Play()
+	local tween69 = TweenService:Create(UIScale14, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween69:Play()
+end)
+
+local UICorner38 = createUICorner(10)
+local UIStroke27 = createUIStroke(0.2, 38, 44, 41)
+local TextButton25 = createTextButton3(8, UICorner38, UIStroke27)
+local UICorner39 = createUICorner(8)
+createImageLabel("rbxassetid://115169947896689", TextButton25, UICorner39)
+createTextLabel(228, 232, 229, TextButton25, "Anime Card Farm", 13, 205, 16)
+createTextLabel2(TextButton25, "Auto farm / cards", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton25, "")
+createImageLabel2(TextButton25)
+local TextLabel40 = createTextLabel6(TextButton25)
+local UICorner40 = createUICorner(6)
+local UIStroke28 = createUIStroke(0.2, 38, 44, 41)
+local TextButton26 = createTextButton4(TextButton25, UICorner40, UIStroke28)
+helper11(TextButton26)
+
+TextButton26.MouseButton1Down:Connect(function(x14, y14)
+end)
+
+TextButton26.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Anime Card Farm")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame40, TextLabel92, UIScale37 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Anime Card Farm aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale15 = createUIScale(TextButton25)
+
+TextButton25.MouseEnter:Connect(function()
+	local tween193 = TweenService:Create(TextButton25, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween193:Play()
+	local tween194 = TweenService:Create(UIScale15, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween194:Play()
+	local tween195 = TweenService:Create(TextLabel40, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween195:Play()
+end)
+
+TextButton25.MouseLeave:Connect(function()
+	local tween196 = TweenService:Create(TextButton25, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween196:Play()
+	local tween197 = TweenService:Create(UIScale15, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween197:Play()
+	local tween198 = TweenService:Create(TextLabel40, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween198:Play()
+end)
+
+TextButton25.MouseButton1Click:Connect(function()
+end)
+
+TextButton25.BackgroundTransparency = 1
+UIScale15.Scale = 0.96
+
+task.delay(0.32, function()
+	local tween70 = TweenService:Create(TextButton25, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween70:Play()
+	local tween71 = TweenService:Create(UIScale15, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween71:Play()
+end)
+
+local UICorner41 = createUICorner(10)
+local UIStroke29 = createUIStroke(0.2, 38, 44, 41)
+local TextButton27 = createTextButton3(9, UICorner41, UIStroke29)
+local UICorner42 = createUICorner(8)
+createImageLabel("rbxassetid://118103427371929", TextButton27, UICorner42)
+createTextLabel(228, 232, 229, TextButton27, "Roblox Anti AFK", 13, 205, 16)
+createTextLabel2(TextButton27, "Blocks idle kick / any game", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton27, "")
+createImageLabel2(TextButton27)
+local TextLabel44 = createTextLabel6(TextButton27)
+local UICorner43 = createUICorner(6)
+local UIStroke30 = createUIStroke(0.2, 38, 44, 41)
+local TextButton28 = createTextButton4(TextButton27, UICorner43, UIStroke30)
+helper12(TextButton28)
+
+TextButton28.MouseButton1Down:Connect(function(x15, y15)
+end)
+
+TextButton28.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Roblox Anti AFK")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame42, TextLabel93, UIScale38 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Roblox Anti AFK aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale16 = createUIScale(TextButton27)
+
+TextButton27.MouseEnter:Connect(function()
+	local tween200 = TweenService:Create(TextButton27, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween200:Play()
+	local tween201 = TweenService:Create(UIScale16, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween201:Play()
+	local tween202 = TweenService:Create(TextLabel44, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween202:Play()
+end)
+
+TextButton27.MouseLeave:Connect(function()
+	local tween203 = TweenService:Create(TextButton27, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween203:Play()
+	local tween204 = TweenService:Create(UIScale16, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween204:Play()
+	local tween205 = TweenService:Create(TextLabel44, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween205:Play()
+end)
+
+TextButton27.MouseButton1Click:Connect(function()
+end)
+
+TextButton27.BackgroundTransparency = 1
+UIScale16.Scale = 0.96
+
+task.delay(0.36, function()
+	local tween79 = TweenService:Create(TextButton27, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween79:Play()
+	local tween80 = TweenService:Create(UIScale16, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween80:Play()
+end)
+
+local UICorner44 = createUICorner(10)
+local UIStroke31 = createUIStroke(0.2, 38, 44, 41)
+local TextButton29 = createTextButton3(10, UICorner44, UIStroke31)
+local UICorner45 = createUICorner(8)
+createImageLabel("rbxassetid://103507136591905", TextButton29, UICorner45)
+createTextLabel(228, 232, 229, TextButton29, "Grow A Garden 2", 13, 205, 16)
+createTextLabel2(TextButton29, "Auto farm / shop / sell", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton29, "")
+createImageLabel2(TextButton29)
+local TextLabel48 = createTextLabel6(TextButton29)
+local UICorner46 = createUICorner(6)
+local UIStroke32 = createUIStroke(0.2, 38, 44, 41)
+local TextButton30 = createTextButton4(TextButton29, UICorner46, UIStroke32)
+helper13(TextButton30)
+
+TextButton30.MouseButton1Down:Connect(function(x16, y16)
+end)
+
+TextButton30.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Grow A Garden 2")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame44, TextLabel94, UIScale39 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Grow A Garden 2 aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale17 = createUIScale(TextButton29)
+
+TextButton29.MouseEnter:Connect(function()
+	local tween207 = TweenService:Create(TextButton29, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween207:Play()
+	local tween208 = TweenService:Create(UIScale17, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween208:Play()
+	local tween209 = TweenService:Create(TextLabel48, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween209:Play()
+end)
+
+TextButton29.MouseLeave:Connect(function()
+	local tween210 = TweenService:Create(TextButton29, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween210:Play()
+	local tween211 = TweenService:Create(UIScale17, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween211:Play()
+	local tween212 = TweenService:Create(TextLabel48, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween212:Play()
+end)
+
+TextButton29.MouseButton1Click:Connect(function()
+end)
+
+TextButton29.BackgroundTransparency = 1
+UIScale17.Scale = 0.96
+
+task.delay(0.4, function()
+	local tween81 = TweenService:Create(TextButton29, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween81:Play()
+	local tween82 = TweenService:Create(UIScale17, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween82:Play()
+end)
+
+local UICorner47 = createUICorner(10)
+local UIStroke33 = createUIStroke(0.2, 38, 44, 41)
+local TextButton31 = createTextButton3(11, UICorner47, UIStroke33)
+local UICorner48 = createUICorner(8)
+createImageLabel("rbxassetid://95633120003456", TextButton31, UICorner48)
+createTextLabel(228, 232, 229, TextButton31, "Tap Heroes: Pet Simulator 99", 13, 205, 16)
+createTextLabel2(TextButton31, "Auto tap / farm", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton31, "")
+createImageLabel2(TextButton31)
+local TextLabel52 = createTextLabel6(TextButton31)
+local UICorner49 = createUICorner(6)
+local UIStroke34 = createUIStroke(0.2, 38, 44, 41)
+local TextButton32 = createTextButton4(TextButton31, UICorner49, UIStroke34)
+helper14(TextButton32)
+
+TextButton32.MouseButton1Down:Connect(function(x17, y17)
+end)
+
+TextButton32.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Tap Heroes: Pet Simulator 99")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame46, TextLabel95, UIScale40 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Tap Heroes: Pet Simulator 99 aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale18 = createUIScale(TextButton31)
+
+TextButton31.MouseEnter:Connect(function()
+	local tween214 = TweenService:Create(TextButton31, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween214:Play()
+	local tween215 = TweenService:Create(UIScale18, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween215:Play()
+	local tween216 = TweenService:Create(TextLabel52, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween216:Play()
+end)
+
+TextButton31.MouseLeave:Connect(function()
+	local tween217 = TweenService:Create(TextButton31, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween217:Play()
+	local tween218 = TweenService:Create(UIScale18, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween218:Play()
+	local tween219 = TweenService:Create(TextLabel52, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween219:Play()
+end)
+
+TextButton31.MouseButton1Click:Connect(function()
+end)
+
+TextButton31.BackgroundTransparency = 1
+UIScale18.Scale = 0.96
+
+task.delay(0.44, function()
+	local tween83 = TweenService:Create(TextButton31, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween83:Play()
+	local tween84 = TweenService:Create(UIScale18, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween84:Play()
+end)
+
+local UICorner50 = createUICorner(10)
+local UIStroke35 = createUIStroke(0.2, 38, 44, 41)
+local TextButton33 = createTextButton3(12, UICorner50, UIStroke35)
+local UICorner51 = createUICorner(8)
+createImageLabel("rbxassetid://95336994655521", TextButton33, UICorner51)
+createTextLabel(228, 232, 229, TextButton33, "Haze Seas", 13, 205, 16)
+createTextLabel2(TextButton33, "Auto punch / farm", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton33, "")
+createImageLabel2(TextButton33)
+local TextLabel56 = createTextLabel6(TextButton33)
+local UICorner52 = createUICorner(6)
+local UIStroke36 = createUIStroke(0.2, 38, 44, 41)
+local TextButton34 = createTextButton4(TextButton33, UICorner52, UIStroke36)
+helper15(TextButton34)
+
+TextButton34.MouseButton1Down:Connect(function(x18, y18)
+end)
+
+TextButton34.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Haze Seas")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame48, TextLabel96, UIScale41 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Haze Seas aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale19 = createUIScale(TextButton33)
+
+TextButton33.MouseEnter:Connect(function()
+	local tween221 = TweenService:Create(TextButton33, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween221:Play()
+	local tween222 = TweenService:Create(UIScale19, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween222:Play()
+	local tween223 = TweenService:Create(TextLabel56, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween223:Play()
+end)
+
+TextButton33.MouseLeave:Connect(function()
+	local tween224 = TweenService:Create(TextButton33, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween224:Play()
+	local tween225 = TweenService:Create(UIScale19, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween225:Play()
+	local tween226 = TweenService:Create(TextLabel56, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween226:Play()
+end)
+
+TextButton33.MouseButton1Click:Connect(function()
+end)
+
+TextButton33.BackgroundTransparency = 1
+UIScale19.Scale = 0.96
+
+task.delay(0.48, function()
+	local tween85 = TweenService:Create(TextButton33, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween85:Play()
+	local tween86 = TweenService:Create(UIScale19, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween86:Play()
+end)
+
+local UICorner53 = createUICorner(10)
+local UIStroke37 = createUIStroke(0.2, 38, 44, 41)
+local TextButton35 = createTextButton3(13, UICorner53, UIStroke37)
+local UICorner54 = createUICorner(8)
+createImageLabel("rbxassetid://74203696854385", TextButton35, UICorner54)
+createTextLabel(228, 232, 229, TextButton35, "Build an Anthill", 13, 205, 16)
+createTextLabel2(TextButton35, "Auto food / collect / sell sugar", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton35, "")
+createImageLabel2(TextButton35)
+local TextLabel60 = createTextLabel6(TextButton35)
+local UICorner55 = createUICorner(6)
+local UIStroke38 = createUIStroke(0.2, 38, 44, 41)
+local TextButton36 = createTextButton4(TextButton35, UICorner55, UIStroke38)
+helper16(TextButton36)
+
+TextButton36.MouseButton1Down:Connect(function(x19, y19)
+end)
+
+TextButton36.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Build an Anthill")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame50, TextLabel97, UIScale42 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Build an Anthill aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale20 = createUIScale(TextButton35)
+
+TextButton35.MouseEnter:Connect(function()
+	local tween228 = TweenService:Create(TextButton35, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween228:Play()
+	local tween229 = TweenService:Create(UIScale20, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween229:Play()
+	local tween230 = TweenService:Create(TextLabel60, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween230:Play()
+end)
+
+TextButton35.MouseLeave:Connect(function()
+	local tween231 = TweenService:Create(TextButton35, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween231:Play()
+	local tween232 = TweenService:Create(UIScale20, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween232:Play()
+	local tween233 = TweenService:Create(TextLabel60, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween233:Play()
+end)
+
+TextButton35.MouseButton1Click:Connect(function()
+end)
+
+TextButton35.BackgroundTransparency = 1
+UIScale20.Scale = 0.96
+
+task.delay(0.52, function()
+	local tween87 = TweenService:Create(TextButton35, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween87:Play()
+	local tween88 = TweenService:Create(UIScale20, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween88:Play()
+end)
+
+local UICorner56 = createUICorner(10)
+local UIStroke39 = createUIStroke(0.2, 38, 44, 41)
+local TextButton37 = createTextButton3(14, UICorner56, UIStroke39)
+local UICorner57 = createUICorner(8)
+createImageLabel("rbxassetid://131809011640166", TextButton37, UICorner57)
+createTextLabel(228, 232, 229, TextButton37, "Build a Ring Farm", 13, 205, 16)
+createTextLabel2(TextButton37, "Auto farm", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton37, "")
+createImageLabel2(TextButton37)
+local TextLabel64 = createTextLabel6(TextButton37)
+local UICorner58 = createUICorner(6)
+local UIStroke40 = createUIStroke(0.2, 38, 44, 41)
+local TextButton38 = createTextButton4(TextButton37, UICorner58, UIStroke40)
+helper17(TextButton38)
+
+TextButton38.MouseButton1Down:Connect(function(x20, y20)
+end)
+
+TextButton38.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Build a Ring Farm")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame52, TextLabel98, UIScale43 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Build a Ring Farm aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale21 = createUIScale(TextButton37)
+
+TextButton37.MouseEnter:Connect(function()
+	local tween235 = TweenService:Create(TextButton37, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween235:Play()
+	local tween236 = TweenService:Create(UIScale21, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween236:Play()
+	local tween237 = TweenService:Create(TextLabel64, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween237:Play()
+end)
+
+TextButton37.MouseLeave:Connect(function()
+	local tween238 = TweenService:Create(TextButton37, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween238:Play()
+	local tween239 = TweenService:Create(UIScale21, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween239:Play()
+	local tween240 = TweenService:Create(TextLabel64, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween240:Play()
+end)
+
+TextButton37.MouseButton1Click:Connect(function()
+end)
+
+TextButton37.BackgroundTransparency = 1
+UIScale21.Scale = 0.96
+
+task.delay(0.56, function()
+	local tween89 = TweenService:Create(TextButton37, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween89:Play()
+	local tween90 = TweenService:Create(UIScale21, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween90:Play()
+end)
+
+local UICorner59 = createUICorner(10)
+local UIStroke41 = createUIStroke(0.2, 38, 44, 41)
+local TextButton39 = createTextButton3(15, UICorner59, UIStroke41)
+local UICorner60 = createUICorner(8)
+createImageLabel("rbxassetid://112510549708715", TextButton39, UICorner60)
+createTextLabel(228, 232, 229, TextButton39, "Evomon", 13, 205, 16)
+createTextLabel2(TextButton39, "Auto hunt / evolve", 28, 205, 14)
+createTextLabel5(120, 128, 124, TextButton39, "")
+createImageLabel2(TextButton39)
+local TextLabel68 = createTextLabel6(TextButton39)
+local UICorner61 = createUICorner(6)
+local UIStroke42 = createUIStroke(0.2, 38, 44, 41)
+local TextButton40 = createTextButton4(TextButton39, UICorner61, UIStroke42)
+helper18(TextButton40)
+
+TextButton40.MouseButton1Down:Connect(function(x21, y21)
+end)
+
+TextButton40.MouseButton1Click:Connect(function()
+	helper3()
+	helper("Evomon")
+	helper20(TextButton14, TextButton16, TextButton18, TextButton20, TextButton22, TextButton24, TextButton26, TextButton28, TextButton30, TextButton32, TextButton34, TextButton36, TextButton38, TextButton40, TextButton42)
+	setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/JualNasiRendang/loader/refs/heads/main/main.lua\"))()")
+	local Frame54, TextLabel99, UIScale44 = tweenUIScale(160, 95, 245, "[Auto Exec: 24h] Evomon aktif! Link dicopy ke clipboard.", 5)
+end)
+
+helper2()
+local UIScale22 = createUIScale(TextButton39)
+
+TextButton39.MouseEnter:Connect(function()
+	local tween242 = TweenService:Create(TextButton39, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween242:Play()
+	local tween243 = TweenService:Create(UIScale22, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween243:Play()
+	local tween244 = TweenService:Create(TextLabel68, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(160, 95, 245) })
+	tween244:Play()
+end)
+
+TextButton39.MouseLeave:Connect(function()
+	local tween245 = TweenService:Create(TextButton39, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween245:Play()
+	local tween246 = TweenService:Create(UIScale22, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween246:Play()
+	local tween247 = TweenService:Create(TextLabel68, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween247:Play()
+end)
+
+TextButton39.MouseButton1Click:Connect(function()
+end)
+
+TextButton39.BackgroundTransparency = 1
+UIScale22.Scale = 0.96
+
+task.delay(0.6, function()
+	local tween91 = TweenService:Create(TextButton39, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween91:Play()
+	local tween92 = TweenService:Create(UIScale22, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween92:Play()
+end)
+
+local UICorner62 = createUICorner(10)
+local UIStroke43 = createUIStroke(0.35, 255, 216, 92)
+local TextButton41 = createTextButton3(16, UICorner62, UIStroke43)
+local UICorner63 = createUICorner(8)
+createImageLabel("rbxassetid://112510549708715", TextButton41, UICorner63)
+createTextLabel(255, 216, 92, TextButton41, "Evomon Gold V4", 13, 205, 16)
+createTextLabel2(TextButton41, "Auto hunt / evolve / VIP farm", 28, 205, 14)
+createTextLabel5(255, 216, 92, TextButton41, "★ PREMIUM ONLY")
+createImageLabel2(TextButton41)
+local TextLabel72 = createTextLabel6(TextButton41)
+local UICorner64 = createUICorner(6)
+local UIStroke44 = createUIStroke(0.2, 38, 44, 41)
+local TextButton42 = createTextButton4(TextButton41, UICorner64, UIStroke44)
+helper19(TextButton42)
+
+TextButton42.MouseButton1Down:Connect(function(x22, y22)
+end)
+
+TextButton42.MouseButton1Click:Connect(function()
+	helper3()
+	local contents275 = readfile("nr_loader_key.txt")
+	local result5 = contents275:split("|")
+	result5[3]:lower()
+	local Frame56, TextLabel100, UIScale45 = tweenUIScale(220, 90, 90, "Khusus member Premium / Gold / Lifetime!", 5)
+end)
+
+helper2()
+local UIScale23 = createUIScale(TextButton41)
+
+TextButton41.MouseEnter:Connect(function()
+	local tween249 = TweenService:Create(TextButton41, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.05 })
+	tween249:Play()
+	local tween250 = TweenService:Create(UIScale23, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1.015 })
+	tween250:Play()
+	local tween251 = TweenService:Create(TextLabel72, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(255, 216, 92) })
+	tween251:Play()
+end)
+
+TextButton41.MouseLeave:Connect(function()
+	local tween252 = TweenService:Create(TextButton41, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween252:Play()
+	local tween253 = TweenService:Create(UIScale23, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 1 })
+	tween253:Play()
+	local tween254 = TweenService:Create(TextLabel72, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextColor3 = Color3.fromRGB(120, 128, 124) })
+	tween254:Play()
+end)
+
+TextButton41.MouseButton1Click:Connect(function()
+end)
+
+TextButton41.BackgroundTransparency = 1
+UIScale23.Scale = 0.96
+
+task.delay(0.64, function()
+	local tween93 = TweenService:Create(TextButton41, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+	tween93:Play()
+	local tween94 = TweenService:Create(UIScale23, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween94:Play()
+end)
+
+print("[NRL] whats-new: showing 3 item(s)")
+helper3()
+
+local function createFrame4(y, parent, uiCorner)
+	local Frame17 = Instance.new("Frame")
+	Frame17.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	Frame17.BackgroundTransparency = 1
+	Frame17.Position = UDim2.fromOffset(14, y)
+	Frame17.Parent = parent
+	Frame17.ZIndex = 52
+	Frame17.BorderSizePixel = 0
+	Frame17.Size = UDim2.new(1, -28, 0, 30)
+	uiCorner.Parent = Frame17
+	return Frame17
+end
+
+local function createImageLabel3(image, parent, uiCorner)
+	local ImageLabel35 = Instance.new("ImageLabel")
+	ImageLabel35.Image = image
+	ImageLabel35.BackgroundTransparency = 0.3
+	ImageLabel35.Position = UDim2.new(0, 8, 0.5, -12)
+	ImageLabel35.Parent = parent
+	ImageLabel35.ZIndex = 53
+	ImageLabel35.BackgroundColor3 = Color3.fromRGB(11, 13, 12)
+	ImageLabel35.Size = UDim2.fromOffset(24, 24)
+	uiCorner.Parent = ImageLabel35
+end
+
+local function createTextLabel7(parent, text)
+	local TextLabel76 = Instance.new("TextLabel")
+	TextLabel76.TextColor3 = Color3.fromRGB(228, 232, 229)
+	TextLabel76.Parent = parent
+	TextLabel76.Text = text
+	TextLabel76.TextTruncate = Enum.TextTruncate.AtEnd
+	TextLabel76.Font = Enum.Font.GothamBold
+	TextLabel76.BackgroundTransparency = 1
+	TextLabel76.Position = UDim2.new(0, 40, 0, 3)
+	TextLabel76.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel76.ZIndex = 53
+	TextLabel76.TextSize = 12
+	TextLabel76.Size = UDim2.new(1, -50, 0, 13)
+end
+
+local function createTextLabel8(parent, text)
+	local TextLabel77 = Instance.new("TextLabel")
+	TextLabel77.TextColor3 = Color3.fromRGB(120, 128, 124)
+	TextLabel77.Parent = parent
+	TextLabel77.Text = text
+	TextLabel77.TextTruncate = Enum.TextTruncate.AtEnd
+	TextLabel77.Font = Enum.Font.Gotham
+	TextLabel77.BackgroundTransparency = 1
+	TextLabel77.Position = UDim2.new(0, 40, 0, 16)
+	TextLabel77.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel77.ZIndex = 53
+	TextLabel77.TextSize = 10
+	TextLabel77.Size = UDim2.new(1, -50, 0, 12)
+end
+
+task.delay(0.35, function(...)
+	local WhatsNew = Instance.new("TextButton")
+	WhatsNew.Parent = Window
+	WhatsNew.Text = ""
+	WhatsNew.AutoButtonColor = false
+	WhatsNew.Name = "WhatsNew"
+	WhatsNew.BackgroundColor3 = Color3.new(0, 0, 0)
+	WhatsNew.BackgroundTransparency = 1
+	WhatsNew.ZIndex = 50
+	WhatsNew.BorderSizePixel = 0
+	WhatsNew.Size = UDim2.fromScale(1, 1)
+	local UICorner67 = createUICorner(12)
+	local UIStroke46 = createUIStroke(0.25, 160, 95, 245)
+	local Frame15 = Instance.new("Frame")
+	Frame15.Active = true
+	Frame15.Parent = WhatsNew
+	Frame15.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame15.BackgroundTransparency = 0.02
+	Frame15.Position = UDim2.fromScale(0.5, 0.5)
+	Frame15.BackgroundColor3 = Color3.fromRGB(14, 16, 15)
+	Frame15.ZIndex = 51
+	Frame15.BorderSizePixel = 0
+	Frame15.Size = UDim2.fromOffset(300, 202)
+	UICorner67.Parent = Frame15
+	UIStroke46.Parent = Frame15
+	local UICorner68 = createUICorner(8)
+	local UIStroke47 = createUIStroke(0.3, 160, 95, 245)
+	local Frame16 = Instance.new("Frame")
+	Frame16.BackgroundColor3 = Color3.fromRGB(58, 34, 92)
+	Frame16.Position = UDim2.fromOffset(14, 14)
+	Frame16.Parent = Frame15
+	Frame16.ZIndex = 52
+	Frame16.BorderSizePixel = 0
+	Frame16.Size = UDim2.fromOffset(42, 16)
+	UICorner68.Parent = Frame16
+	UIStroke47.Parent = Frame16
+	local TextLabel74 = Instance.new("TextLabel")
+	TextLabel74.ZIndex = 53
+	TextLabel74.Font = Enum.Font.GothamBold
+	TextLabel74.BackgroundTransparency = 1
+	TextLabel74.TextColor3 = Color3.fromRGB(160, 95, 245)
+	TextLabel74.Parent = Frame16
+	TextLabel74.Text = "NEW"
+	TextLabel74.TextSize = 9
+	TextLabel74.Size = UDim2.fromScale(1, 1)
+	local TextLabel75 = Instance.new("TextLabel")
+	TextLabel75.TextColor3 = Color3.fromRGB(228, 232, 229)
+	TextLabel75.Parent = Frame15
+	TextLabel75.Text = "New Games Added"
+	TextLabel75.TextTruncate = Enum.TextTruncate.AtEnd
+	TextLabel75.Font = Enum.Font.GothamBold
+	TextLabel75.BackgroundTransparency = 1
+	TextLabel75.Position = UDim2.fromOffset(62, 13)
+	TextLabel75.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel75.ZIndex = 52
+	TextLabel75.TextSize = 14
+	TextLabel75.Size = UDim2.new(1, -100, 0, 18)
+	local UICorner69 = createUICorner(6)
+	local TextButton44 = Instance.new("TextButton")
+	TextButton44.TextColor3 = Color3.fromRGB(120, 128, 124)
+	TextButton44.Parent = Frame15
+	TextButton44.Text = "x"
+	TextButton44.AutoButtonColor = false
+	TextButton44.AnchorPoint = Vector2.new(1, 0)
+	TextButton44.Font = Enum.Font.GothamBold
+	TextButton44.BackgroundTransparency = 0.2
+	TextButton44.Position = UDim2.new(1, -12, 0, 12)
+	TextButton44.BackgroundColor3 = Color3.fromRGB(24, 28, 26)
+	TextButton44.ZIndex = 52
+	TextButton44.TextSize = 12
+	TextButton44.Size = UDim2.fromOffset(20, 20)
+	UICorner69.Parent = TextButton44
+	setupTextButton(TextButton44, 220, 90, 90)
+	local UICorner70 = createUICorner(8)
+	local Frame17 = createFrame4(46, Frame15, UICorner70)
+	local UICorner71 = createUICorner(6)
+	createImageLabel3("rbxthumb://type=GameIcon&id=10708913337&w=150&h=150", Frame17, UICorner71)
+	createTextLabel7(Frame17, "Anime Dice")
+	createTextLabel8(Frame17, "Auto roll / farm / luck")
+
+	task.delay(0.05, function()
+		local tween76 = TweenService:Create(Frame17, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+		tween76:Play()
+	end)
+
+	local UICorner72 = createUICorner(8)
+	local Frame18 = createFrame4(80, Frame15, UICorner72)
+	local UICorner73 = createUICorner(6)
+	createImageLabel3("rbxthumb://type=GameIcon&id=10035204815&w=150&h=150", Frame18, UICorner73)
+	createTextLabel7(Frame18, "Ride A Pet")
+	createTextLabel8(Frame18, "Auto farm / egg / ride")
+
+	task.delay(0.1, function()
+		local tween77 = TweenService:Create(Frame18, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+		tween77:Play()
+	end)
+
+	local UICorner74 = createUICorner(8)
+	local Frame19 = createFrame4(114, Frame15, UICorner74)
+	local UICorner75 = createUICorner(6)
+	createImageLabel3("rbxassetid://94197048748373", Frame19, UICorner75)
+	createTextLabel7(Frame19, "Grow a Chicken Fighter")
+	createTextLabel8(Frame19, "Auto farm / fight")
+
+	task.delay(0.15000000000000002, function()
+		local tween78 = TweenService:Create(Frame19, TweenInfo.new(0.16, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.2 })
+		tween78:Play()
+	end)
+
+	local UICorner76 = createUICorner(9)
+	local UIStroke48 = createUIStroke(0.2, 160, 95, 245)
+	local TextButton45 = Instance.new("TextButton")
+	TextButton45.TextColor3 = Color3.fromRGB(228, 232, 229)
+	TextButton45.Parent = Frame15
+	TextButton45.Text = "GOT IT"
+	TextButton45.BackgroundColor3 = Color3.fromRGB(58, 34, 92)
+	TextButton45.AutoButtonColor = false
+	TextButton45.AnchorPoint = Vector2.new(0.5, 1)
+	TextButton45.Font = Enum.Font.GothamBold
+	TextButton45.BackgroundTransparency = 0.1
+	TextButton45.Position = UDim2.new(0.5, 0, 1, -14)
+	TextButton45.TextSize = 12
+	TextButton45.ZIndex = 52
+	TextButton45.BorderSizePixel = 0
+	TextButton45.Size = UDim2.new(1, -28, 0, 32)
+	UICorner76.Parent = TextButton45
+	UIStroke48.Parent = TextButton45
+	onMouseEnter(TextButton45, 0, 0.1)
+	local UIScale26 = createUIScale2(Frame15, 0.9)
+	Frame15.BackgroundTransparency = 1
+	Frame15.UIStroke.Transparency = 1
+	local tween72 = TweenService:Create(WhatsNew, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.45 })
+	tween72:Play()
+	local tween73 = TweenService:Create(UIScale26, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+	tween73:Play()
+	local tween74 = TweenService:Create(Frame15, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 0.02 })
+	tween74:Play()
+	local tween75 = TweenService:Create(Frame15.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Transparency = 0.25 })
+	tween75:Play()
+
+	TextButton45.MouseButton1Click:Connect(function()
+		local tween266 = TweenService:Create(WhatsNew, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 1 })
+		tween266:Play()
+		local tween267 = TweenService:Create(UIScale26, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 0.92 })
+		tween267:Play()
+		local tween268 = TweenService:Create(Frame15, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 1 })
+		tween268:Play()
+		local tween269 = TweenService:Create(Frame15.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Transparency = 1 })
+		tween269:Play()
+		Frame15:GetDescendants()
+
+		task.delay(0.34, function()
+		end)
+	end)
+
+	TextButton44.MouseButton1Click:Connect(function()
+	end)
+end)
+
+TextButton2.MouseButton1Click:Connect(function()
+	task.spawn(function()
+		local tween255 = TweenService:Create(Window, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 1 })
+		tween255:Play()
+		local tween256 = TweenService:Create(Window.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Transparency = 1 })
+		tween256:Play()
+		local tween257 = TweenService:Create(UIScale, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Scale = 0.30600000000000005 })
+		tween257:Play()
+		task.wait(0.32)
+		NR_Loader:Destroy()
+	end)
+end)
+
+UserInputService.InputBegan:Connect(function(input4, gameProcessed4)
+end)
+
+local UICorner65 = createUICorner(8)
+local UIStroke45 = createUIStroke(0.2, 160, 95, 245)
+local Frame13 = createFrame2(UICorner65, UIStroke45)
+local UICorner66 = createUICorner(2)
+createFrame3(Frame13, 160, 95, 245, UICorner66)
+local TextLabel73 = createTextLabel4(Frame13, "Nasi Rendang loader ready. Pick a game.")
+local UIScale24 = createUIScale2(Frame13, 0.85)
+local tween55 = TweenService:Create(UIScale24, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Scale = 1 })
+tween55:Play()
+
+task.delay(5, function()
+	local tween95 = TweenService:Create(Frame13, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { BackgroundTransparency = 1 })
+	tween95:Play()
+	local tween96 = TweenService:Create(Frame13.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Transparency = 1 })
+	tween96:Play()
+	local tween97 = TweenService:Create(TextLabel73, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { TextTransparency = 1 })
+	tween97:Play()
+	task.wait(0.32)
+	Frame13:Destroy()
+end)
